@@ -1,6 +1,13 @@
-import { UserRequestDTO, UserResponseDTO } from "../../dto/example.dto";
+import {
+  UserRequestDTO,
+  UpdateUserRequestDTO,
+  UserResponseDTO,
+} from "../../dto/users.dto"; 
 
-export interface IUserInterface {
-    createUser(user: UserRequestDTO): Promise<UserResponseDTO>;
-    updateUser(userId: string, user: UserRequestDTO): Promise<UserResponseDTO>;
+export interface IUserService {
+  createUser(user: UserRequestDTO): Promise<UserResponseDTO>;
+  updateUser(
+    user: UpdateUserRequestDTO,
+    userId: string
+  ): Promise<UserResponseDTO>;
 }
