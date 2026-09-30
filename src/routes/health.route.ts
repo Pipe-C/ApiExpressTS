@@ -1,13 +1,12 @@
 import { Router } from "express";
-import { container } from "../../config/container";
-import { UserController } from "../../controllers/health.controller";
+import { makeInvoker } from "awilix-express";
+import { HealthController } from "../controllers/health.controller";
 
 const router = Router();
 
-router.get("/", async (req, res) => {
-    const controller = 
-    container.resolve<UserController>("healthController");
-    return controller.health(req, res);
-});
+// Vincula la ruta directamente al método "health" de "healthController"
+const api = makeInvoker(HealthController);
+
+router.get("/", api("health"));
 
 export default router;
